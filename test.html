@@ -8,26 +8,25 @@
     <title>3-6-9</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        function autotab(current,to){
-            if (current.getAttribute && 
-              current.value.length==current.getAttribute("maxlength")) {
-                to.focus() 
-                }
+        function autotab(current,to) {
+            if (current.getAttribute &&
+                current.value.length == current.getAttribute("maxlength")) {
+                to.focus()
+            }
         }</script>
-  
+
 </head>
 
 <body>
     <!-- <div class="input-container"> -->
-      <form name="hitInput" class="input-container">
-        <input type="number" id="inputA" name="inputA" min="0" max="3"  maxlength=1 required data-nextfield="inputB" onKeyup="autotab(this, document.hitInput.inputB)" >
+    <form name="hitInput" class="input-container">
+        <input type="number" id="inputA" name="inputA" min="0" max="3" maxlength=1 required data-nextfield="inputB" onKeyup="autotab(this, document.hitInput.inputB)">
         <input type="number" id="inputB" name="inputB" min="0" max="3" required data-next="inputC" onKeyup="autotab(this, document.hitInput.inputC)" maxlength=1>
         <input type="number" id="inputC" name="inputC" min="0" max="3" required data-next="udButton" onKeyup="autotab(this, document.hitInput.inputButton)" maxlength=1>
-        <input type="submit" id="udButton" name="inputButton" disabled value="Click Me!">
-      </form>
+        <input type="button" id="udButton" name="inputButton" disabled value="Click Me!">
+    </form>
     <!-- </div> -->
     <div class="grid-container">
-
 
         <div class="item2">
             <p>Total Draws</p>
@@ -213,7 +212,7 @@
         </div>
     </div>
     <div class="sixlist">
-        <div  id="listAB0card">
+        <div id="listAB0card">
             <p>AB0</p>
             <p id="listAB0">0</p>
         </div>
@@ -221,15 +220,15 @@
             <p>AB1</p>
             <p id="listAB1">0</p>
         </div>
-        <div  id="listAB2card">
+        <div id="listAB2card">
             <p>AB2</p>
             <p id="listAB2">0</p>
         </div>
-        <div  id="listAB3card">
+        <div id="listAB3card">
             <p>AB3</p>
             <p id="listAB3">0</p>
         </div>
-        <div  id="listAB4card">
+        <div id="listAB4card">
             <p>AB4</p>
             <p id="listAB4">0</p>
         </div>
@@ -237,11 +236,11 @@
             <p>AB5</p>
             <p id="listAB5">0</p>
         </div>
-        <div  id="listAB6card">
+        <div id="listAB6card">
             <p>AB6</p>
             <p id="listAB6">0</p>
         </div>
-        <div  id="listAC0card"> 
+        <div id="listAC0card">
             <p>AC0</p>
             <p id="listAC0">0</p>
         </div>
@@ -249,7 +248,7 @@
             <p>AC1</p>
             <p id="listAC1">0</p>
         </div>
-        <div  id="listAC2card">
+        <div id="listAC2card">
             <p>AC2</p>
             <p id="listAC2">0</p>
         </div>
@@ -341,9 +340,11 @@
         </div>
     </div>
     <div>
-        <p></p><input type="button" id="reset" value="reset" class="reset"></button>
+        <p></p><input type="button" id="reset" value="reset" class="reset"  tabindex="-1"></button>
     </div>
-    <div id="totalABCcard"> <p id="totalABC">55</p></div>
+    <div id="totalABCcard">
+        <p id="totalABC">0</p>
+    </div>
     <script src="testscripts.js"></script>
 </body>
 

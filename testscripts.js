@@ -11,7 +11,7 @@ function myCode() {
         //loops through obj and sets html text
         Object.keys(displayValues).forEach(function(dispID) {
             document.getElementById(dispID).innerText = displayValues[dispID];
-           // console.log(dispID  + " " + displayValues[dispID]);
+            // console.log(dispID  + " " + displayValues[dispID]);
         })
         console.log("true" + displayValues);
         // if not saved, runs loadZeroDisplay function to create display value obj and set html text
@@ -20,7 +20,7 @@ function myCode() {
         console.log("false" + displayValues);
     } // end if localstorage
 
-document.hitInput.inputA.focus();
+    document.hitInput.inputA.focus();
     //initialize global variables
     var A;
     var B;
@@ -29,7 +29,7 @@ document.hitInput.inputA.focus();
     var AC;
     var BC;
     var ABC;
-    var won; // = +document.getElementById("won").innerText; //needed?
+    const log = [];
     //load constants
     const permutations = ['A', 'B', 'C', 'AB', 'AC', 'BC', 'ABC'];
     const winTable3 = [0, 0, 2, 48];
@@ -46,33 +46,20 @@ document.hitInput.inputA.focus();
         'BC': ['sinceLastBC', winTable6, 6, 'totalBC', 'coinsBC'],
         'ABC': ['sinceLastABC', winTable9, 9, 'totalABC', 'coinsABC']
     };
-   // event listener for update
-//    var checkInputA= document.getElementById("inputA");
+    // event listener for update
+    //    var checkInputA= document.getElementById("inputA");
     document.getElementById("inputA").oninput = inputCheck;
     document.getElementById("inputB").oninput = inputCheck;
     document.getElementById("inputC").oninput = inputCheck;
 
-     function inputCheck() {
-if (document.getElementById("inputA").validity.valid && document.getElementById("inputB").validity.valid && document.getElementById("inputC").validity.valid) {
-    document.hitInput.inputButton.disabled = false;
-} else {
-document.hitInput.inputButton.disabled = true;
+    function inputCheck() {
+        if (document.getElementById("inputA").validity.valid && document.getElementById("inputB").validity.valid && document.getElementById("inputC").validity.valid) {
+            document.hitInput.inputButton.disabled = false;
+        } else {
+            document.hitInput.inputButton.disabled = true;
 
-}};
-
-//         console.log("e: " + e);
-//         let elm=e.dataset.nextfield;
-//         console.log("e ID: " + e.ID);
-//       console.log("elm: " + elm);
-//    //  let nextField=elm.dataset.nextfield;
-//          if(e.validity.valid) {
-//              console.log("d.ID(elm): " + document.getElementById(elm));
-//         document.getElementById(elm).focus();
-//         } else {
-//            e.value=null;
-//            return
-//        }};
-
+        }
+    };
 
     document.getElementById("udButton").addEventListener("click", update);
     document.getElementById("udButton").addEventListener("click", clickAnim);
@@ -80,9 +67,6 @@ document.hitInput.inputButton.disabled = true;
     // click event function
     function update() {
 
-        // animElems = document.querySelectorAll('p[class]');
-        // animElems.forEach(function(element){this.classList.toggle('animated')});
-        //onclick="this.classList.toggle('animated')"
         //get input data and calculate ways
         A = +document.getElementById('inputA').value;
         B = +document.getElementById('inputB').value;
@@ -96,6 +80,10 @@ document.hitInput.inputButton.disabled = true;
 
         var permValues = [A, B, C, AB, AC, BC, ABC];
 
+        let date=Date.now();
+        let entry = {[date]: [displayValues.totalDraws,A,B,C]};
+        log.push(entry);
+        console.table(log);
         //step through each permutation with udSinceLast function
         permutations.forEach(udSinceLast);
 
@@ -132,13 +120,7 @@ document.hitInput.inputButton.disabled = true;
             displayValues[list]++;
 
         }
-        //  console.log("hits end value: " + hits);
-        //increase hits table
-        // if (hits < 9) {
-        //    let hitList = "list" + hits;
-        //     //     document.getElementById(hitList).innerText++;
-        //    displayValues[hitList]++;
-        // }
+
         //reset or increast any 3/3,6/6,7/9 8/9 9/9 sinceLastcounters
         if (A == 3 || B == 3 || C == 3) {
             //    document.getElementById("sinceLast3").innerText = 0;
@@ -168,31 +150,31 @@ document.hitInput.inputButton.disabled = true;
             //    document.getElementById("sinceLast8").innerText++;
             displayValues.sinceLast8++;
         }
-        //increase/display coins played, total draws, total won, draw win
-        // let coins = +document.getElementById("coinsPlayed").innerText;
+
         //   coins += 7;
         displayValues.coinsPlayed += 7;
-        //  document.getElementById("coinsPlayed").innerText = coins;      
-        // document.getElementById("totalDraws").innerText++;
+
         displayValues.totalDraws += 1;
-        //  document.getElementById("coinsMade").innerText = coinsMade;
+
         displayValues.coinsMade = coinsMade;
-        //add draw win to total win
-        //      document.getElementById("won").innerText = won;
+
         displayValues.won += coinsMade;
 
         //save displayValues 
         //  console.log(displayValues);
         Object.keys(displayValues).forEach(function(dispID) {
-            console.log(dispID + " " + displayValues[dispID]);
+          //  console.log(dispID + " " + displayValues[dispID]);
             document.getElementById(dispID).innerText = displayValues[dispID];
         });
         localStorage.setItem("testValues", JSON.stringify(displayValues));
-       //  console.log(displayValues)
+        //  console.log(displayValues)
         oddsFormatting();
 
+        document.getElementById('inputA').value = "";
+        document.getElementById('inputB').value = "";
+        document.getElementById('inputC').value = "";
+        document.hitInput.inputA.focus();
     } // end function update
-
 
     //sets displayValues obj to all zeros sets html text 
     function loadZeroDisplay() {
@@ -310,10 +292,8 @@ document.hitInput.inputButton.disabled = true;
         var intervalID = 0;
         animElems = document.querySelectorAll('p[id]');
         //   console.log("animElements1" + animElems);
-
         animElems.forEach(function(element) {
             //    console.log("forEach " + element);
-
             //    console.log("opacity1 " + opacity);
             element.style.opacity = opacity;
             //    console.log("opacity2 " + element.style.opacity);
@@ -323,10 +303,8 @@ document.hitInput.inputButton.disabled = true;
                 opacity = Number(window.getComputedStyle(element).getPropertyValue("opacity"));
 
                 if (opacity < 1) {
-
                     opacity = opacity + 0.05;
                     element.style.opacity = opacity;
-                    //              console.log("opacity3 " + opacity);
                 } else {
                     clearInterval(intervalID);
                 }
@@ -334,192 +312,165 @@ document.hitInput.inputButton.disabled = true;
         })
     } //end function clickAnim
 
+    // Catch	Combinations    
+    // 3    	1140    72.07
+    // 2    	11400   7.21
+    // 1	    35400   2.32
+    // 0    	34220   2.40
+    // Total	82160
+
+    // Catch 	Combinations	
+    // 6    	38760   	7752.84
+    // 5	    930240  	323.04
+    // 4    	8575650	    35.04
+    // 3	    39010800	7.70
+    // 2	    92650650	3.24
+    // 1	    109230240	2.75
+    // 0	    50063860	6.00
+    // Total 	300500200	
+
+    // Catch 	Combinations	
+    // 9    	167960  	1380687.65
+    // 8	    7558200 	30681.95
+    // 7    	137210400	1690.11
+    // 6    	1326367200	174.84
+    // 5	    7560293040	30.67
+    // 4    	26461025640	8.76
+    // 3    	57072800400	4.06
+    // 2    	73379314800	3.16
+    // 1    	51172416900	4.53
+    // 0    	14783142660	15.69
+    // Total 	231900297200	
 
 
-// Catch	Combinations    
-// 3    	1140    72.07
-// 2    	11400   7.21
-// 1	    35400   2.32
-// 0    	34220   2.40
-// Total	82160
+    function oddsFormatting() {
+        var hitFrequency = {
 
-// Catch 	Combinations	
-// 6    	38760   	7752.84
-// 5	    930240  	323.04
-// 4    	8575650	    35.04
-// 3	    39010800	7.70
-// 2	    92650650	3.24
-// 1	    109230240	2.75
-// 0	    50063860	6.00
-// Total 	300500200	
+            "won": 1.0638, //=won+coinsMade  x147
 
-// Catch 	Combinations	
-// 9    	167960  	1380687.65
-// 8	    7558200 	30681.95
-// 7    	137210400	1690.11
-// 6    	1326367200	174.84
-// 5	    7560293040	30.67
-// 4    	26461025640	8.76
-// 3    	57072800400	4.06
-// 2    	73379314800	3.16
-// 1    	51172416900	4.53
-// 0    	14783142660	15.69
-// Total 	231900297200	
+            "listABC0": 15.69, //addOne x102
+            "listABC1": 4.53, //addOne x102
+            "listABC2": 3.16, //addOne x102
+            "listABC3": 4.06, //addOne x102
+            "listABC4": 8.76, //addOne x102
+            "listABC5": 30.67, //addOne x102
+            "listABC6": 174.84, //addOne x102
+            "listABC7": 1690.11, //addOne x102
+            "listABC8": 30681.95, //addOne x102
+            "listABC9": 1380687.65, //addOne x102
+            "totalABC": 1380687.65, //addOne x85
 
+            "listA0": 2.40, //addOne x94
+            "listA1": 2.32, //addOne x94
+            "listA2": 7.21, //addOne x94
+            "listA3": 7.21, //addOne x94
 
-// Catch	Combinations
-// 6	    38760
-// 5	    930240
-// 4	    8575650
-// 3	    39010800
-// 2	    92650650
-// 1	    109230240
-// 0	    50063860
-// Total	300500200
+            "listB0": 2.40, //addOne x94
+            "listB1": 2.32, //addOne x94
+            "listB2": 7.21, //addOne x94
+            "listB3": 72.07, //addOne x94
 
-// Catch	Combinations
-// 9	    167960
-// 8	    7558200
-// 7	    137210400
-// 6	    1326367200
-// 5	    7560293040
-// 4	    26461025640
-// 3	    57072800400
-// 2	    73379314800
-// 1	    51172416900
-// 0	    14783142660
-// Total	231900297200
-function oddsFormatting() {
-    var hitFrequency = {
+            "listC0": 2.40, //addOne x94
+            "listC1": 2.32, //addOne x94
+            "listC2": 7.21, //addOne x94
+            "listC3": 72.07, //addOne x94
 
-        "won": 1.0638, //=won+coinsMade  x147
+            "listAB0": 6.00, //addOne x94
+            "listAB1": 2.75, //addOne x94
+            "listAB2": 3.24, //addOne x94
+            "listAB3": 7.70, //addOne x94
+            "listAB4": 35.04, //addOne x94
+            "listAB5": 323.04, //addOne x94
+            "listAB6": 7752.84, //addOne x94
 
-        "listABC0": 15.69, //addOne x102
-        "listABC1": 4.53, //addOne x102
-        "listABC2": 3.16, //addOne x102
-        "listABC3": 4.06, //addOne x102
-        "listABC4": 8.76, //addOne x102
-        "listABC5": 30.67, //addOne x102
-        "listABC6": 174.84, //addOne x102
-        "listABC7": 1690.11, //addOne x102
-        "listABC8": 30681.95, //addOne x102
-        "listABC9": 1380687.65, //addOne x102
-        "totalABC": 1380687.65, //addOne x85
+            "listAC0": 6.00, //addOne x94
+            "listAC1": 2.75, //addOne x94
+            "listAC2": 3.24, //addOne x94
+            "listAC3": 7.70, //addOne x94
+            "listAC4": 35.04, //addOne x94
+            "listAC5": 323.04, //addOne x94
+            "listAC6": 7752.84, //addOne x94
 
-        "listA0": 2.40, //addOne x94
-        "listA1": 2.32, //addOne x94
-        "listA2": 7.21, //addOne x94
-        "listA3": 7.21, //addOne x94
+            "listBC0": 6.00, //addOne x94
+            "listBC1": 2.75, //addOne x94
+            "listBC2": 3.24, //addOne x94
+            "listBC3": 7.70, //addOne x94
+            "listBC4": 35.04, //addOne x94
+            "listBC5": 323.04, //addOne x94
+            "listBC6": 7752.84, //addOne x94
 
-        "listB0": 2.40, //addOne x94
-        "listB1": 2.32, //addOne x94
-        "listB2": 7.21, //addOne x94
-        "listB3": 72.07, //addOne x94
+            "totalAB": 7752.84, //addOne x85 XX
+            "totalAC": 7752.84, //addOne x85 XX
+            "totalBC": 7752.84, //addOne x85 XX
 
-        "listC0": 2.40, //addOne x94
-        "listC1": 2.32, //addOne x94
-        "listC2": 7.21, //addOne x94
-        "listC3": 72.07, //addOne x94
+            "totalA": 72.07, //addOne x85 XX
+            "totalB": 72.07, //addOne x85 XX
+            "totalC": 72.07, //addOne x85 XX
+        };
 
-        "listAB0": 6.00, //addOne x94
-        "listAB1": 2.75, //addOne x94
-        "listAB2": 3.24, //addOne x94
-        "listAB3": 7.70, //addOne x94
-        "listAB4": 35.04, //addOne x94
-        "listAB5": 323.04, //addOne x94
-        "listAB6": 7752.84, //addOne x94
+        var sinceLastFreq = {
+            "sinceLastABC": 1380687.65, //sinceLast x88 XX
+            "sinceLastAB": 7752.84, //sinceLast x88 XX
+            "sinceLastAC": 7752.84, //sinceLast x88 XX
+            "sinceLastBC": 7752.84, //sinceLast x88 XX
+            "sinceLastA": 72.07, //sinceLast x88 XX
+            "sinceLastB": 72.07, //sinceLast x88 XX
+            "sinceLastC": 72.07, //sinceLast x88 XX
 
-        "listAC0": 6.00, //addOne x94
-        "listAC1": 2.75, //addOne x94
-        "listAC2": 3.24, //addOne x94
-        "listAC3": 7.70, //addOne x94
-        "listAC4": 35.04, //addOne x94
-        "listAC5": 323.04, //addOne x94
-        "listAC6": 7752.84, //addOne x94
+            "sinceLast8": 30681.95, //anyAll x129 XX
+            "sinceLast7": 1690.11, //anyAll  x122  XX
+            "sinceLast6": 2583.98, //anyAll  x115 XX
+            "sinceLast3": 24.37, //anyAll x110 XX
+        };
 
-        "listBC0": 6.00, //addOne x94
-        "listBC1": 2.75, //addOne x94
-        "listBC2": 3.24, //addOne x94
-        "listBC3": 7.70, //addOne x94
-        "listBC4": 35.04, //addOne x94
-        "listBC5": 323.04, //addOne x94
-        "listBC6": 7752.84, //addOne x94
+        Object.keys(hitFrequency).forEach(function(dispID) {
+            if (displayValues[dispID] != 0) {
 
-        "totalAB": 7752.84, //addOne x85 XX
-        "totalAC": 7752.84, //addOne x85 XX
-        "totalBC": 7752.84, //addOne x85 XX
+                let expectedTotal = displayValues.totalDraws / hitFrequency[dispID];
 
-        "totalA": 72.07, //addOne x85 XX
-        "totalB": 72.07, //addOne x85 XX
-        "totalC": 72.07, //addOne x85 XX
-    };
+               // console.log("dispID: " + dispID + " value: " + hitFrequency[dispID] + " totalDraws: " + displayValues.totalDraws + " expectedTotal: " + expectedTotal + " displayValues[dispID]: " + displayValues[dispID]);
 
-    var sinceLastFreq = {
-        "sinceLastABC": 1380687.65, //sinceLast x88 XX
-        "sinceLastAB": 7752.84, //sinceLast x88 XX
-        "sinceLastAC": 7752.84, //sinceLast x88 XX
-        "sinceLastBC": 7752.84, //sinceLast x88 XX
-        "sinceLastA": 72.07, //sinceLast x88 XX
-        "sinceLastB": 72.07, //sinceLast x88 XX
-        "sinceLastC": 72.07, //sinceLast x88 XX
+                let parentID = dispID + "card";
 
-        "sinceLast8": 30681.95, //anyAll x129 XX
-        "sinceLast7": 1690.11, //anyAll  x122  XX
-        "sinceLast6": 2583.98, //anyAll  x115 XX
-        "sinceLast3": 24.37, //anyAll x110 XX
-    };
+                let container = document.getElementById(parentID);
 
-    Object.keys(hitFrequency).forEach(function(dispID) {
-     if (displayValues[dispID] != 0) { 
+                if (displayValues[dispID] < (.5 * expectedTotal)) {
+                    container.style.backgroundColor = '#ff66ff';
+                } else if (displayValues[dispID] < (.75 * expectedTotal)) {
+                    container.style.backgroundColor = '#ffccff';
+                } else if (displayValues[dispID] > (1.5 * expectedTotal)) {
+                    container.style.backgroundColor = '#c6ffb380';
+                } else if (displayValues[dispID] > (2 * expectedTotal)) {
+                    container.style.backgroundColor = '#79ff4d80';
+                } else {
+                    container.style.backgroundColor = '#ffffffcc';
+                }
+            }
+        });
 
-        let expectedTotal = displayValues.totalDraws / hitFrequency[dispID];
+        Object.keys(sinceLastFreq).forEach(function(dispID) {
+            if (displayValues[dispID] != 0) {
 
-        console.log("dispID: " + dispID + " value: " + hitFrequency[dispID] + " totalDraws: " + displayValues.totalDraws + " expectedTotal: " + expectedTotal + " displayValues[dispID]: " + displayValues[dispID]);
+                let expectedValue = sinceLastFreq[dispID];
 
-let parentID = dispID + "card";
+              //  console.log("dispID: " + dispID + " value: " + sinceLastFreq[dispID] + "expectedValue: " + expectedValue + " displayValues[dispID]: " + displayValues[dispID]);
 
-        let container = document.getElementById(parentID);
+                let parentID = dispID + "card";
 
-    /*    console.log(container + " " +
-"dispID: " + dispID + " expectedTotal: " + expectedTotal + " container: " + container); */
+                let container = document.getElementById(parentID);
 
-        if (displayValues[dispID] < (.5 * expectedTotal)) {
-            container.style.backgroundColor = '#ff66ff80';
-        } else if (displayValues[dispID] < (.75 * expectedTotal)) {
-            container.style.backgroundColor = '#ffccff80';
-        } else if (displayValues[dispID] > (1.5 * expectedTotal)) {
-            container.style.backgroundColor = '#c6ffb380';
-        } else if (displayValues[dispID] > (2 * expectedTotal)) {
-            container.style.backgroundColor = '#79ff4d80';
-        } else {
-            container.style.backgroundColor = '#ffffffcc';
-        }
-    }});
- 
-    Object.keys(sinceLastFreq).forEach(function(dispID) {
-        if (displayValues[dispID] != 0) { 
+                if (displayValues[dispID] > (2 * expectedValue)) {
+                    container.style.backgroundColor = '#ff666680';
+                } else if (displayValues[dispID] > (1.5 * expectedValue)) {
+                    container.style.backgroundColor = '#ff999980';
+                } else if (displayValues[dispID] > (expectedValue)) {
+                    container.style.backgroundColor = '#ffe6e680';
+                } else {
+                    container.style.backgroundColor = '#ffffffcc';
+                }
 
-        let expectedValue = sinceLastFreq[dispID];
-
-        console.log("dispID: " + dispID + " value: " + sinceLastFreq[dispID] + "expectedValue: " + expectedValue + " displayValues[dispID]: " + displayValues[dispID]);
-       
-let parentID = dispID + "card";
-
-let container = document.getElementById(parentID);
-
-        // console.log("dispID: " + dispID + "expectedValue: " + expectedValue + "container: " + container);
-
-        if (displayValues[dispID] > (2 * expectedValue)) {
-            container.style.backgroundColor = '#ff666680';
-        } else if (displayValues[dispID] > (1.5 * expectedValue)) {
-            container.style.backgroundColor = '#ff999980';
-        } else if (displayValues[dispID] > (expectedValue)) {
-            container.style.backgroundColor = '#ffe6e680';
-        } else {
-            container.style.backgroundColor = '#ffffffcc';
-        }
-
-    }});
-} //end function oddsFormatting
+            }
+        });
+    } //end function oddsFormatting
 
 } //end myCode
