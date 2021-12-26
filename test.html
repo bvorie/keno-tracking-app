@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3-6-9</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-test.css">
     <script>
         function autotab(current,to) {
             if (current.getAttribute &&
@@ -20,14 +20,14 @@
 <body>
     <div class="content">
     <!-- <div class="input-container"> -->
-    <form name="hitInput" class="input-container">
+    <form name="hitInput" class="input-container grid">
         <input type="number" id="inputA" name="inputA" min="0" max="3" maxlength=1 required data-nextfield="inputB" onKeyup="autotab(this, document.hitInput.inputB)">
         <input type="number" id="inputB" name="inputB" min="0" max="3" required data-next="inputC" onKeyup="autotab(this, document.hitInput.inputC)" maxlength=1>
         <input type="number" id="inputC" name="inputC" min="0" max="3" required data-next="udButton" onKeyup="autotab(this, document.hitInput.inputButton)" maxlength=1>
         <input type="button" id="udButton" name="inputButton" disabled value="Click Me!">
     </form>
     <!-- </div> -->
-    <div class="grid-container">
+    <div class="main-container grid">
         <div class="item2">
             <p>Total Draws</p>
             <p id="totalDraws">0</p>
@@ -299,7 +299,7 @@
             <p id="listBC6">0</p>
         </div>
     </div>
-    <div class="list-container">
+    <div class="ninelist">
         <div id="listABC0card">
             <p>ABC0</p>
             <p id="listABC0">0</p>

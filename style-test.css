@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(45deg, #b8bbc2 0%, #6e6e81 100%);
+}
+
+.content {
+    max-width: 740px;
+    margin: auto;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.input-container {
+    background-color: #b1b8be;
+    padding: 5px;
+}
+
+input {
+    background-color: rgba(184, 159, 231, 0.8);
+    padding: 8px 0;
+    font-size: 26px;
+    box-shadow: 5px 5px 3px rgb(237, 201, 241);
+}
+
+input:invalid {
+    background-color: #ffdddd;
+}
+
+input:active {
+    color: deeppink;
+    background-color: rgba(44, 10, 107, 0.8);
+}
+
+.main-container {
+    background-color: #b2d4f0;
+    grid-auto-rows: 110px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.main-container>div {
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.item2 {
+    border: thick double #c3cdf8;
+    background: linear-gradient(145deg, #bbc9ff 0%, #9ea9e6 100%);
+}
+
+.item4 {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 5px;
+    padding: 5px;
+    border: thick double rgb(181, 170, 231);
+    background: linear-gradient(145deg, #3c5bd4 0%, #1939ec 100%);
+    color: azure
+}
+
+.item4>p:first-child,
+.item4>p:nth-child(2) {
+    margin: .5em;
+    font-size: 20px;
+}
+
+.win {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.item5 {
+    border: thick double rgb(223, 160, 181);
+    background-color: rgb(235, 89, 31);
+}
+
+.item6 {
+    border: thick solid rgb(228, 222, 225);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.item3 {
+    border: solid rgb(160, 202, 178);
+}
+
+.threelist {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 5px;
+    background-color: #2196F3;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.threelist>div {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sixlist {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-gap: 5px;
+    background-color: #2196F3;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.sixlist>div {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.ninelist {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-gap: 5px;
+    background-color: #2196F3;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.ninelist>div {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.reset {
+    background-color: goldenrod;
+    border: solid brown;
+    font-size: 1.4em;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+#totalABCcard {
+    visibility: hidden;
+}
