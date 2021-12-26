@@ -1,6 +1,5 @@
 window.onload = myCode();
 
-
 function myCode() {
 
     var displayValues;
@@ -10,10 +9,8 @@ function myCode() {
         displayValues = JSON.parse(localStorage.getItem('testValues'));
         //loops through obj and sets html text
         Object.keys(displayValues).forEach(function(dispID) {
-            document.getElementById(dispID).innerText = displayValues[dispID];
-            // console.log(dispID  + " " + displayValues[dispID]);
+            document.getElementById(dispID).innerText = displayValues[dispID];           
         })
-        console.log("true" + displayValues);
         // if not saved, runs loadZeroDisplay function to create display value obj and set html text
     } else {
         loadZeroDisplay();
@@ -46,8 +43,7 @@ function myCode() {
         'BC': ['sinceLastBC', winTable6, 6, 'totalBC', 'coinsBC'],
         'ABC': ['sinceLastABC', winTable9, 9, 'totalABC', 'coinsABC']
     };
-    // event listener for update
-    //    var checkInputA= document.getElementById("inputA");
+    // event listener for update  
     document.getElementById("inputA").oninput = inputCheck;
     document.getElementById("inputB").oninput = inputCheck;
     document.getElementById("inputC").oninput = inputCheck;
@@ -57,7 +53,6 @@ function myCode() {
             document.hitInput.inputButton.disabled = false;
         } else {
             document.hitInput.inputButton.disabled = true;
-
         }
     };
 
@@ -91,67 +86,52 @@ function myCode() {
 
             let sinceLast = combo[value][0];
             hits = permValues[index];
-            //  let sLA = +document.getElementById(sinceLast).innerText;
-            //let sLA = displayValues[sinceLast];
             let winTable = combo[value][1];
             let totalTimes = combo[value][3];
-            let coinsWay = combo[value][4];
-            //    let spots=combo[value][2];
+            let coinsWay = combo[value][4];          
             displayValues[value] = hits;
 
             //check for 3/3,6/6,9/9; reset or increase sinceLast counters; increase way totals
-            if (hits == combo[value][2]) {
-                // if (hits == spots) {
-                //  document.getElementById(sinceLast).innerText = 0;
-                //   document.getElementById(totalTimes).innerText++;
+            if (hits == combo[value][2]) {             
                 displayValues[sinceLast] = 0;
                 displayValues[totalTimes] += 1;
-            } else {
-                //      document.getElementById(sinceLast).innerText = ++sLA;
+            } else {            
                 displayValues[sinceLast] += 1;
             }
             //add way winning to draw total won; display way winnings
             coinsMade += winTable[hits];
-            //    document.getElementById(coinsWay).innerText = winTable[hits];
+          
             displayValues[coinsWay] = winTable[hits];
 
             let list = "list" + value + hits;
-            //   console.log(list);
             displayValues[list]++;
-
         }
 
         //reset or increast any 3/3,6/6,7/9 8/9 9/9 sinceLastcounters
         if (A == 3 || B == 3 || C == 3) {
-            //    document.getElementById("sinceLast3").innerText = 0;
             displayValues.sinceLast3 = 0;
         } else {
-            //  document.getElementById("sinceLast3").innerText++;
             displayValues.sinceLast3++;
         }
+
         if (AB == 6 || AC == 6 || BC == 6) {
-            //   document.getElementById("sinceLast6").innerText = 0;
             displayValues.sinceLast6 = 0;
         } else {
-            //     document.getElementById("sinceLast6").innerText++;
             displayValues.sinceLast6++;
         }
+
         if (hits == 7) {
-            //  document.getElementById("sinceLast7").innerText = 0;
             displayValues.sinceLast7 = 0;
         } else {
-            //   document.getElementById("sinceLast7").innerText++;
             displayValues.sinceLast7++;
         }
+
         if (hits == 8) {
-            //  document.getElementById("sinceLast8").innerText = 0;
             displayValues.sinceLast8 = 0;
         } else {
-            //    document.getElementById("sinceLast8").innerText++;
             displayValues.sinceLast8++;
         }
 
-        //   coins += 7;
         displayValues.coinsPlayed += 7;
 
         displayValues.totalDraws += 1;
@@ -161,13 +141,12 @@ function myCode() {
         displayValues.won += coinsMade;
 
         //save displayValues 
-        //  console.log(displayValues);
-        Object.keys(displayValues).forEach(function(dispID) {
-          //  console.log(dispID + " " + displayValues[dispID]);
+        Object.keys(displayValues).forEach(function(dispID) {         
             document.getElementById(dispID).innerText = displayValues[dispID];
         });
+
         localStorage.setItem("testValues", JSON.stringify(displayValues));
-        //  console.log(displayValues)
+       
         oddsFormatting();
 
         document.getElementById('inputA').value = "";
@@ -278,25 +257,20 @@ function myCode() {
 
     function reset() {
         if (confirm("Do you want to delete saved data?")) {
-            // localStorage.clear();
-            // loadZeroDisplay();
+             localStorage.clear();
+             loadZeroDisplay();
         } else {
             return
         }
-
     }; //end function reset
 
     function clickAnim() {
-        // console.log("click");
         var opacity = 0;
         var intervalID = 0;
         animElems = document.querySelectorAll('p[id]');
-        //   console.log("animElements1" + animElems);
-        animElems.forEach(function(element) {
-            //    console.log("forEach " + element);
-            //    console.log("opacity1 " + opacity);
-            element.style.opacity = opacity;
-            //    console.log("opacity2 " + element.style.opacity);
+ 
+        animElems.forEach(function(element) {           
+            element.style.opacity = opacity;          
             intervalID = setInterval(opacityAnim, 70);
 
             function opacityAnim() {
@@ -425,10 +399,7 @@ function myCode() {
 
         Object.keys(hitFrequency).forEach(function(dispID) {
             if (displayValues[dispID] != 0) {
-
                 let expectedTotal = displayValues.totalDraws / hitFrequency[dispID];
-
-               // console.log("dispID: " + dispID + " value: " + hitFrequency[dispID] + " totalDraws: " + displayValues.totalDraws + " expectedTotal: " + expectedTotal + " displayValues[dispID]: " + displayValues[dispID]);
 
                 let parentID = dispID + "card";
 
@@ -450,10 +421,7 @@ function myCode() {
 
         Object.keys(sinceLastFreq).forEach(function(dispID) {
             if (displayValues[dispID] != 0) {
-
                 let expectedValue = sinceLastFreq[dispID];
-
-              //  console.log("dispID: " + dispID + " value: " + sinceLastFreq[dispID] + "expectedValue: " + expectedValue + " displayValues[dispID]: " + displayValues[dispID]);
 
                 let parentID = dispID + "card";
 
