@@ -1,43 +1,13 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(45deg, #b8bbc2 0%, #6e6e81 100%);
 }
 
-.animated {
-transition-property: opacity;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
-  background-color: #b2d4f0;
-  /* padding: 5px;*/
-  grid-auto-rows: 110px;
-}
-
-.grid-container>div {
-  /* background-color: rgba(255, 255, 255, 0.8);*/
-  text-align: center;
-  /*   padding: 5px 0; */
-  font-size: 18px;
-}
-
-
-.threelist {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 5px;
-  background-color: #2196F3;
-  padding: 5px;
-
-}
-
-.threelist>div {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 5px 0;
-  font-size: 16px;
-}
+.content {
+  max-width: 740px;
+ margin: auto;
+ text-align: center; 
+} 
 
 .input-container {
   display: grid;
@@ -52,7 +22,7 @@ input {
   text-align: center;
   padding: 8px 0;
   font-size: 26px;
-  box-shadow: 5px 5px 3px rgb(237, 201, 241) inset;
+  box-shadow: -3px 4px 1px rgb(237, 201, 241) ;
 }
 
 input:invalid {
@@ -64,23 +34,130 @@ color: deeppink;
   background-color: rgba(44, 10, 107, 0.8);
 }
 
-#totalABCcard {
-  visibility: hidden;
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  background-color: #b2d4f0;
+  grid-auto-rows: 110px;
 }
 
-.list-container {
+.grid-container>div {
+  /* text-align: center;  */
+  font-size: 18px;
+}
+
+.item2 {
+  border: thick double #c3cdf8;
+  font-weight: bold;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+  background: linear-gradient(145deg, #bbc9ff 0%, #9ea9e6 100%);
+  border-radius: 20px
+}
+
+/* item2 */
+
+.item4 {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto;
+  grid-gap: 5px;
+  padding: 5px;
+  border: thick double rgb(181, 170, 231);
+  /* background-color: rgb(31, 17, 216); */
+  background: linear-gradient(145deg, #3c5bd4 0%, #1939ec 100%);
+  font-weight: bold;
+  color: azure;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+}
+
+.item4>p:first-child,
+.item4>p:nth-child(2) {
+  margin: .5em;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.win {
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.item5 {
+  border: thick double rgb(223, 160, 181);
+  background-color: rgb(235, 89, 31);
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+}
+
+
+/* second row */
+/* item 2 */
+.item6 {
+  border: thick solid rgb(228, 222, 225);
+  background-color: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+}
+
+/* item 4 */
+
+/* .item4>p:first-child,
+.item4>p:nth-child(2) */
+
+/* item 6 */
+
+
+/* row 3 */
+.item3 {
+  border: solid rgb(160, 202, 178);
+   font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+}
+
+/* item 6 */
+
+/* item 4 */
+
+/* .item4>p:first-child,
+.item4>p:nth-child(2) */
+
+/* item 6 */
+
+
+/* row 4 & 5 & 6 & 7*/
+/* .item3 */
+
+/* item 6 */
+
+/* item 4 */
+
+/* .item4>p:first-child,
+.item4>p:nth-child(2) */
+
+/* item 6 */
+
+
+/* 3 spots */
+.threelist {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
   grid-gap: 5px;
   background-color: #2196F3;
   padding: 5px;
 }
 
-.list-container>div {
+.threelist>div {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
   padding: 5px 0;
   font-size: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
 }
 
 .item1 {
@@ -90,6 +167,7 @@ color: deeppink;
   font-size: 16px;
 }
 
+/* 6 spots */
 .sixlist {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto;
@@ -103,78 +181,26 @@ color: deeppink;
   text-align: center;
   padding: 5px 0;
   font-size: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
 }
 
-.item4>p:first-child,
-.item4>p:nth-child(2) {
-  margin: .5em;
-  font-weight: bold;
-  font-size: 20px;
-
-}
-
-.item2 {
-  border: thick double #c3cdf8;
-  /* background-color: aqua; */
-
-  font-weight: bold;
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
-  /* border-radius: 20px; */
-  
-  background: linear-gradient(145deg, #bbc9ff 0%, #9ea9e6 100%);
-  /* box-shadow: 5px 5px 15px #8791c4, -5px -5px 15px #d7e7ff; */
-  border-radius: 20px
-}
-
-.item3 {
-  border: solid rgb(160, 202, 178);
-  /* background-color: rgb(130, 253, 113); */
- /*  background: linear-gradient(145deg, #92f57f 0%, #18f12a  100%);*/
-  font-weight: bold;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 20px;
-}
-
-.item4 {
+/* 9 list */
+.list-container {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto auto auto;
   grid-gap: 5px;
-
+  background-color: #2196F3;
   padding: 5px;
-  border: thick double rgb(181, 170, 231);
-  /* background-color: rgb(31, 17, 216); */
-  background: linear-gradient(145deg, #3c5bd4 0%, #1939ec 100%);
-  font-weight: bold;
-  color: azure;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  /* box-shadow: 3px 3px 3px rgba(206, 43, 179, 0.856) inset; */
-  border-radius: 20px;
 }
 
-
-
-.item5 {
-  border: thick double rgb(223, 160, 181);
-  background-color: rgb(235, 89, 31);
-
-  font-weight: bold;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 20px;
-}
-
-.item6 {
-  border: thick solid rgb(228, 222, 225);
+.list-container>div {
   background-color: rgba(255, 255, 255, 0.8);
-
-  font-weight: bold;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 20px;
-}
-
-.win {
-  font-weight: normal;
+  text-align: center;
+  padding: 5px 0;
   font-size: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
 }
+
 
 .reset {
   background-color: goldenrod;
@@ -183,3 +209,8 @@ color: deeppink;
   border-radius: 20px;
   padding: 5px 10px;
 }
+
+#totalABCcard {
+  visibility: hidden;
+}
+

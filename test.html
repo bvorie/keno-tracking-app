@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <div class="content">
     <!-- <div class="input-container"> -->
     <form name="hitInput" class="input-container">
         <input type="number" id="inputA" name="inputA" min="0" max="3" maxlength=1 required data-nextfield="inputB" onKeyup="autotab(this, document.hitInput.inputB)">
@@ -27,7 +28,6 @@
     </form>
     <!-- </div> -->
     <div class="grid-container">
-
         <div class="item2">
             <p>Total Draws</p>
             <p id="totalDraws">0</p>
@@ -161,6 +161,7 @@
             <p id="totalC">0</p>
         </div>
     </div>
+
     <div class="threelist">
         <div id="listA0card" class="item1">
             <p>A0</p>
@@ -211,6 +212,7 @@
             <p id="listC3">0</p>
         </div>
     </div>
+    
     <div class="sixlist">
         <div id="listAB0card">
             <p>AB0</p>
@@ -345,6 +347,7 @@
     <div id="totalABCcard">
         <p id="totalABC">0</p>
     </div>
+</div>
     <script src="testscripts.js"></script>
 </body>
 
