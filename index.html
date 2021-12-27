@@ -1,108 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3-6-9</title>
-    <link rel="stylesheet" href="style.css">
-  
+    <link rel="stylesheet" href="/css/styles.css">
+    <script>
+        function autotab(current,to) {
+            if (current.getAttribute &&
+                current.value.length == current.getAttribute("maxlength")) {
+                to.focus()
+            }
+        }</script>
+
 </head>
+
 <body>
-    <div class="input-container">
-        <input type="number" id="inputA" name="A" min="0" max="3" required autofocus>
-        <input type="number" id="inputB"  min="0" max="3" required>
-        <input type="number" id="inputC"  min="0" max="3" required>
-        <input type="button" id="udButton" value="Click Me!">
+    <div class="content">
+    <!-- <div class="input-container"> -->
+    <form name="hitInput" class="input-container grid">
+        <input type="number" id="inputA" name="inputA" min="0" max="3" maxlength=1 required data-nextfield="inputB" onKeyup="autotab(this, document.hitInput.inputB)">
+        <input type="number" id="inputB" name="inputB" min="0" max="3" required data-next="inputC" onKeyup="autotab(this, document.hitInput.inputC)" maxlength=1>
+        <input type="number" id="inputC" name="inputC" min="0" max="3" required data-next="udButton" onKeyup="autotab(this, document.hitInput.inputButton)" maxlength=1>
+        <input type="button" id="udButton" name="inputButton" disabled value="Click Me!">
+    </form>
+    <!-- </div> -->
+    <div class="main-container grid">
+        <div class="item2">
+            <p>Total Draws</p>
+            <p id="totalDraws">0</p>
+        </div>
+        <div id="woncard" class="item2">
+            <p>Total Coins Won</p>
+            <p id="won">0</p>
+        </div>
+        <div class="item4">
+            <p>A+B+C</p>
+            <p id="ABC">0</p>
+            <p class="win">win</p>
+            <p class="win" id="coinsABC">0</p>
+        </div>
+        <div id="coinsMadecard" class="item5">
+            <p>Draw Win Amt</p>
+            <p id="coinsMade">0</p>
+        </div>
+
+        <div class="item2">
+            <p>Total Coins Played</p>
+            <p id="coinsPlayed">0</p>
+        </div>
+        <div id="sinceLastABcard" class="item6">
+            <p>Since Last A+B</p>
+            <p id="sinceLastAB">0</p>
+        </div>
+        <div class="item4">
+            <p>A+B</p>
+            <p id="AB">0</p>
+            <p class="win">win</p>
+            <p class="win" id="coinsAB">0</p>
+        </div>
+        <div id="totalABcard" class="item6">
+            <p>Total A+B</p>
+            <p id="totalAB">0</p>
+        </div>
+
+        <div id="sinceLastABCcard" class="item3">
+            <p>Since Last 9/9</p>
+            <p id="sinceLastABC">0</p>
+        </div>
+        <div id="sinceLastACcard" class="item6">
+            <p>Since Last A+C</p>
+            <p id="sinceLastAC">0</p>
+        </div>
+        <div class="item4">
+            <p>A+C</p>
+            <p id="AC">0</p>
+            <p class="win">win</p>
+            <p class="win" id="coinsAC">0</p>
+        </div>
+        <div id="totalACcard" class="item6">
+            <p>Total A+C</p>
+            <p id="totalAC">0</p>
+        </div>
+
+        <div id="sinceLast8card" class="item3">
+            <p>Since Last 8/9</p>
+            <p id="sinceLast8">0</p>
+        </div>
+        <div id="sinceLastBCcard" class="item6">
+            <p>Since Last B+C</p>
+            <p id="sinceLastBC">0</p>
+        </div>
+        <div class="item4">
+            <p>B+C</p>
+            <p id="BC">0</p>
+            <p class="win">win</p>
+            <p class="win" id="coinsBC">0</p>
+        </div>
+        <div id="totalBCcard" class="item6">
+            <p>Total B+C</p>
+            <p id="totalBC">0</p>
+        </div>
+
+        <div id="sinceLast7card" class="item3">
+            <p>Since Last 7/9</p>
+            <p id="sinceLast7">0</p>
+        </div>
+        <div id="sinceLastAcard" class="item6">
+            <p>Since Last A</p>
+            <p id="sinceLastA">0</p>
+        </div>
+        <div class="item4">
+            <p>A</p>
+            <p id="A">0</p>
+            <p class="win">win</p>
+            <p class="win" id="coinsA">0</p>
+        </div>
+        <div id="totalAcard" class="item6">
+            <p>Total A</p>
+            <p id="totalA">0</p>
+        </div>
+
+        <div id="sinceLast6card" class="item3">
+            <p>Since Last 6/6</p>
+            <p id="sinceLast6">0</p>
+        </div>
+        <div id="sinceLastBcard" class="item6">
+            <p>Since Last B</p>
+            <p id="sinceLastB">0</p>
+        </div>
+        <div class="item4">
+            <p>B</p>
+            <p id="B">0</p>
+            <p class="win">win</p>
+            <p class="win" id="coinsB">0</p>
+        </div>
+        <div id="totalBcard" class="item6">
+            <p>Total B</p>
+            <p id="totalB">0</p>
+        </div>
+
+        <div id="sinceLast3card" class="item3">
+            <p>Since Last 3/3</p>
+            <p id="sinceLast3">0</p>
+        </div>
+        <div id="sinceLastCcard" class="item6">
+            <p>Since Last C</p>
+            <p id="sinceLastC">0</p>
+        </div>
+        <div class="item4">
+            <p>C</p>
+            <p id="C">0</p>
+            <p class="win">win</p>
+            <p class="win" id="coinsC">0</p>
+        </div>
+        <div id="totalCcard" class="item6">
+            <p>Total C</p>
+            <p id="totalC">0</p>
+        </div>
     </div>
-    <div class="grid-container">
-      
-      
-        <div class="item2"><p>Total Draws</p><p id="totalDraws">0</p></div>
-        <div class="item2"><p>Total Coins Won</p><p id="won">0</p></div>        
-        <div class="item4"><p>A+B+C</p><p id="ABC">0</p><p class="win">win</p><p class="win" id="coinsABC">0</p></div>
-        <div class="item5"><p>Draw Win Amt</p><p id="coinsMade">0</p></div>
 
-        <div class="item2"><p>Total Coins Played</p><p id="coinsPlayed">0</p></div>     
-        <div class="item6"><p>Since Last A+B</p><p id="sinceLastAB">0</p></div>  
-        <div class="item4"><p>A+B</p><p id="AB">0</p><p class="win">win</p><p class="win" id="coinsAB">0</p></div>
-        <div class="item6"><p>Total A+B</p><p id="totalAB">0</p></div>  
-       
-        <div class="item3"><p>Since Last 9/9</p><p id="sinceLastABC">0</p></div>        
-        <div class="item6"><p>Since Last A+C</p><p id="sinceLastAC">0</p></div>  
-        <div class="item4"><p>A+C</p><p id="AC">0</p><p class="win">win</p><p class="win" id="coinsAC">0</p></div>  
-        <div class="item6"><p>Total A+C</p><p id="totalAC">0</p></div>  
-      
-        <div class="item3"><p>Since Last 8/9</p><p id="sinceLast8">0</p></div>      
-        <div class="item6"><p>Since Last B+C</p><p id="sinceLastBC">0</p></div>  
-        <div class="item4"><p>B+C</p><p id="BC">0</p><p class="win">win</p><p class="win" id="coinsBC">0</p></div>  
-        <div class="item6"><p>Total B+C</p><p id="totalBC">0</p></div>  
-
-        <div class="item3"><p>Since Last 7/9</p><p id="sinceLast7">0</p></div>     
-        <div class="item6"><p>Since Last A</p><p id="sinceLastA">0</p></div>  
-        <div class="item4"><p>A</p><p id="A">0</p><p class="win">win</p><p class="win" id="coinsA">0</p></div>  
-        <div class="item6"><p>Total A</p><p id="totalA">0</p></div>  
-     
-        <div class="item3"><p>Since Last 6/6</p><p id="sinceLast6">0</p></div>      
-        <div class="item6"><p>Since Last B</p><p id="sinceLastB">0</p></div>  
-        <div class="item4"><p>B</p><p id="B">0</p><p class="win">win</p><p class="win" id="coinsB">0</p></div>  
-        <div class="item6"><p>Total B</p><p id="totalB">0</p></div>  
-       
-        <div class="item3"><p>Since Last 3/3</p><p id="sinceLast3">0</p></div>
-        <div class="item6"><p>Since Last C</p><p id="sinceLastC">0</p></div>  
-        <div class="item4"><p>C</p><p id="C">0</p><p class="win">win</p><p class="win" id="coinsC">0</p></div>  
-        <div class="item6"><p>Total C</p><p id="totalC">0</p></div>  
+    <div class="threelist">
+        <div id="listA0card" class="item1">
+            <p>A0</p>
+            <p id="listA0">0</p>
+        </div>
+        <div id="listA1card" class="item1">
+            <p>A1</p>
+            <p id="listA1">0</p>
+        </div>
+        <div id="listA2card" class="item1">
+            <p>A2</p>
+            <p id="listA2">0</p>
+        </div>
+        <div id="listA3card" class="item1">
+            <p>A3</p>
+            <p id="listA3">0</p>
+        </div>
+        <div id="listB0card" class="item1">
+            <p>B0</p>
+            <p id="listB0">0</p>
+        </div>
+        <div id="listB1card" class="item1">
+            <p>B1</p>
+            <p id="listB1">0</p>
+        </div>
+        <div id="listB2card" class="item1">
+            <p>B2</p>
+            <p id="listB2">0</p>
+        </div>
+        <div id="listB3card" class="item1">
+            <p>B3</p>
+            <p id="listB3">0</p>
+        </div>
+        <div id="listC0card" class="item1">
+            <p>C0</p>
+            <p id="listC0">0</p>
+        </div>
+        <div id="listC1card" class="item1">
+            <p>C1</p>
+            <p id="listC1">0</p>
+        </div>
+        <div id="listC2card" class="item1">
+            <p>C2</p>
+            <p id="listC2">0</p>
+        </div>
+        <div id="listC3card" class="item1">
+            <p>C3</p>
+            <p id="listC3">0</p>
+        </div>
+    </div>
+    
+    <div class="sixlist">
+        <div id="listAB0card">
+            <p>AB0</p>
+            <p id="listAB0">0</p>
+        </div>
+        <div id="listAB1card">
+            <p>AB1</p>
+            <p id="listAB1">0</p>
+        </div>
+        <div id="listAB2card">
+            <p>AB2</p>
+            <p id="listAB2">0</p>
+        </div>
+        <div id="listAB3card">
+            <p>AB3</p>
+            <p id="listAB3">0</p>
+        </div>
+        <div id="listAB4card">
+            <p>AB4</p>
+            <p id="listAB4">0</p>
+        </div>
+        <div id="listAB5card">
+            <p>AB5</p>
+            <p id="listAB5">0</p>
+        </div>
+        <div id="listAB6card">
+            <p>AB6</p>
+            <p id="listAB6">0</p>
+        </div>
+        <div id="listAC0card">
+            <p>AC0</p>
+            <p id="listAC0">0</p>
+        </div>
+        <div id="listAC1card">
+            <p>AC1</p>
+            <p id="listAC1">0</p>
+        </div>
+        <div id="listAC2card">
+            <p>AC2</p>
+            <p id="listAC2">0</p>
+        </div>
+        <div id="listAC3card">
+            <p>AC3</p>
+            <p id="listAC3">0</p>
+        </div>
+        <div id="listAC4card">
+            <p>AC4</p>
+            <p id="listAC4">0</p>
+        </div>
+        <div id="listAC5card">
+            <p>AC5</p>
+            <p id="listAC5">0</p>
+        </div>
+        <div id="listAC6card">
+            <p>AC6</p>
+            <p id="listAC6">0</p>
+        </div>
+        <div id="listBC0card">
+            <p>BC0</p>
+            <p id="listBC0">0</p>
+        </div>
+        <div id="listBC1card">
+            <p>BC1</p>
+            <p id="listBC1">0</p>
+        </div>
+        <div id="listBC2card">
+            <p>BC2</p>
+            <p id="listBC2">0</p>
+        </div>
+        <div id="listBC3card">
+            <p>BC3</p>
+            <p id="listBC3">0</p>
+        </div>
+        <div id="listBC4card">
+            <p>BC4</p>
+            <p id="listBC4">0</p>
+        </div>
+        <div id="listBC5card">
+            <p>BC5</p>
+            <p id="listBC5">0</p>
+        </div>
+        <div id="listBC6card">
+            <p>BC6</p>
+            <p id="listBC6">0</p>
+        </div>
+    </div>
+    <div class="ninelist">
+        <div id="listABC0card">
+            <p>ABC0</p>
+            <p id="listABC0">0</p>
+        </div>
+        <div id="listABC1card">
+            <p>ABC1</p>
+            <p id="listABC1">0</p>
+        </div>
+        <div id="listABC2card">
+            <p>ABC2</p>
+            <p id="listABC2">0</p>
+        </div>
+        <div id="listABC3card">
+            <p>ABC3</p>
+            <p id="listABC3">0</p>
+        </div>
+        <div id="listABC4card">
+            <p>ABC4</p>
+            <p id="listABC4">0</p>
+        </div>
+        <div id="listABC5card">
+            <p>ABC5</p>
+            <p id="listABC5">0</p>
+        </div>
+        <div id="listABC6card">
+            <p>ABC6</p>
+            <p id="listABC6">0</p>
+        </div>
+        <div id="listABC7card">
+            <p>ABC7</p>
+            <p id="listABC7">0</p>
+        </div>
+        <div id="listABC8card">
+            <p>ABC8</p>
+            <p id="listABC8">0</p>
+        </div>
+        <div id="listABC9card">
+            <p>ABC9</p>
+            <p id="listABC9">0</p>
+        </div>
+    </div>
+    <div>
+        <p></p><input type="button" id="reset" value="reset" class="reset"  tabindex="-1"></button>
+    </div>
+    <div id="totalABCcard">
+        <p id="totalABC">0</p>
+    </div>
 </div>
-<div class="threelist">
-    <div class="item1"><p>A0</p><p id="listA0">0</p></div>
-    <div class="item1"><p>A1</p><p id="listA1">0</p></div>
-    <div class="item1"><p>A2</p><p id="listA2">0</p></div>
-    <div class="item1"><p>A3</p><p id="listA3">0</p></div>
-    <div class="item1"><p>B0</p><p id="listB0">0</p></div>
-<div class="item1"><p>B1</p><p id="listB1">0</p></div>
-<div class="item1"><p>B2</p><p id="listB2">0</p></div>
-<div class="item1"><p>B3</p><p id="listB3">0</p></div>
-<div class="item1"><p>C0</p><p id="listC0">0</p></div>
-<div class="item1"><p>C1</p><p id="listC1">0</p></div>
-<div class="item1"><p>C2</p><p id="listC2">0</p></div>
-<div class="item1"><p>C3</p><p id="listC3">0</p></div>
-      </div>
-      <div class="sixlist">
-        <div><p>AB0</p><p id="listAB0">0</p></div>
-        <div><p>AB1</p><p id="listAB1">0</p></div>
-        <div><p>AB2</p><p id="listAB2">0</p></div>
-        <div><p>AB3</p><p id="listAB3">0</p></div>
-        <div><p>AB4</p><p id="listAB4">0</p></div>
-        <div><p>AB5</p><p id="listAB5">0</p></div>
-        <div><p>AB6</p><p id="listAB6">0</p></div>
-        <div><p>AC0</p><p id="listAC0">0</p></div>
-        <div><p>AC1</p><p id="listAC1">0</p></div>
-        <div><p>AC2</p><p id="listAC2">0</p></div>
-        <div><p>AC3</p><p id="listAC3">0</p></div>
-        <div><p>AC4</p><p id="listAC4">0</p></div>
-        <div><p>AC5</p><p id="listAC5">0</p></div>
-        <div><p>AC6</p><p id="listAC6">0</p></div>
-        <div><p>BC0</p><p id="listBC0">0</p></div>
-        <div><p>BC1</p><p id="listBC1">0</p></div>
-        <div><p>BC2</p><p id="listBC2">0</p></div>
-        <div><p>BC3</p><p id="listBC3">0</p></div>
-        <div><p>BC4</p><p id="listBC4">0</p></div>
-        <div><p>BC5</p><p id="listBC5">0</p></div>
-        <div><p>BC6</p><p id="listBC6">0</p></div>
-      </div>
-      <div class="list-container">
-<div><p>0</p><p id="list0">0</p></div>
-<div><p>1</p><p id="list1">0</p></div>
-<div><p>2</p><p id="list2">0</p></div>
-<div><p>3</p><p id="list3">0</p></div>
-<div><p>4</p><p id="list4">0</p></div>
-<div><p>5</p><p id="list5">0</p></div>
-<div><p>6</p><p id="list6">0</p></div>
-<div><p>7</p><p id="list7">0</p></div>
-<div><p>8</p><p id="list8">0</p></div>
-<div><p>9</p><p id="totalABC">0</p></div>
-      </div>
-      <div ><p></p><input type="button" id="reset" value="reset" class="reset"></button></div>
-      <script src="keno.js"></script>
+    <script src="/js/scripts.js"></script>
 </body>
+
 </html>

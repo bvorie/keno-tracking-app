@@ -77,8 +77,11 @@ function myCode() {
 
         let date=Date.now();
         let entry = {[date]: [displayValues.totalDraws,A,B,C]};
+        //storeLog(entry);
         log.push(entry);
         console.table(log);
+
+
         //step through each permutation with udSinceLast function
         permutations.forEach(udSinceLast);
 
@@ -316,7 +319,6 @@ function myCode() {
     // 0    	14783142660	15.69
     // Total 	231900297200	
 
-
     function oddsFormatting() {
         var hitFrequency = {
 
@@ -440,5 +442,8 @@ function myCode() {
             }
         });
     } //end function oddsFormatting
+
+//function storeLog(entry) {}
+
 
 } //end myCode
